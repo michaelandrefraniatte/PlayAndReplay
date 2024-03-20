@@ -310,6 +310,12 @@ namespace PlayAndReplay
         }
         private void Play()
         {
+            if (replay)
+            {
+                replay = false;
+                replayToolStripMenuItem.Text = "Replay";
+                Thread.Sleep(100);
+            }
             if (!play)
             {
                 play = true;
@@ -327,6 +333,12 @@ namespace PlayAndReplay
         }
         private void Replay()
         {
+            if (play)
+            {
+                play = false;
+                playToolStripMenuItem.Text = "Play";
+                Thread.Sleep(100);
+            }
             if (!replay)
             {
                 replay = true;
@@ -361,7 +373,7 @@ namespace PlayAndReplay
                     richTextBox1.AppendText(elapseplay + "; ControllerThumbRightX; " + xi.ControllerThumbRightX + "; \r\n");
                 ValueChange[1] = xi.ControllerThumbRightY;
                 if (ValueChange._ValueChange[1] != 0)
-                    richTextBox1.AppendText(elapseplay + "; ControllerThumbRightX; " + xi.ControllerThumbRightY + "; \r\n");
+                    richTextBox1.AppendText(elapseplay + "; ControllerThumbRightY; " + xi.ControllerThumbRightY + "; \r\n");
                 ValueChange[2] = xi.ControllerThumbLeftX;
                 if (ValueChange._ValueChange[2] != 0)
                     richTextBox1.AppendText(elapseplay + "; ControllerThumbLeftX; " + xi.ControllerThumbLeftX + "; \r\n");
