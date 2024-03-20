@@ -315,6 +315,7 @@ namespace PlayAndReplay
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
                 Thread.Sleep(100);
+                watchreplay.Stop();
             }
             if (!play)
             {
@@ -329,6 +330,8 @@ namespace PlayAndReplay
             {
                 play = false;
                 playToolStripMenuItem.Text = "Play";
+                Thread.Sleep(100);
+                watchplay.Stop();
             }
         }
         private void Replay()
@@ -338,6 +341,7 @@ namespace PlayAndReplay
                 play = false;
                 playToolStripMenuItem.Text = "Play";
                 Thread.Sleep(100);
+                watchplay.Stop();
             }
             if (!replay)
             {
@@ -359,6 +363,8 @@ namespace PlayAndReplay
             {
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
+                Thread.Sleep(100);
+                watchreplay.Stop();
             }
         }
         private void taskPlay()
