@@ -870,128 +870,494 @@ namespace PlayAndReplay
                         {
                             Send9 = bool.Parse(data[2]);
                         }
-                        str += "Key_A : " + Key_A + Environment.NewLine;
-                        str += "Key_B : " + Key_B + Environment.NewLine;
-                        str += "Key_C : " + Key_C + Environment.NewLine;
-                        str += "Key_D : " + Key_D + Environment.NewLine;
-                        str += "Key_E : " + Key_E + Environment.NewLine;
-                        str += "Key_F : " + Key_F + Environment.NewLine;
-                        str += "Key_G : " + Key_G + Environment.NewLine;
-                        str += "Key_H : " + Key_H + Environment.NewLine;
-                        str += "Key_I : " + Key_I + Environment.NewLine;
-                        str += "Key_J : " + Key_J + Environment.NewLine;
-                        str += "Key_K : " + Key_K + Environment.NewLine;
-                        str += "Key_L : " + Key_L + Environment.NewLine;
-                        str += "Key_M : " + Key_M + Environment.NewLine;
-                        str += "Key_N : " + Key_N + Environment.NewLine;
-                        str += "Key_O : " + Key_O + Environment.NewLine;
-                        str += "Key_P : " + Key_P + Environment.NewLine;
-                        str += "Key_Q : " + Key_Q + Environment.NewLine;
-                        str += "Key_R : " + Key_R + Environment.NewLine;
-                        str += "Key_S : " + Key_S + Environment.NewLine;
-                        str += "Key_T : " + Key_T + Environment.NewLine;
-                        str += "Key_U : " + Key_U + Environment.NewLine;
-                        str += "Key_V : " + Key_V + Environment.NewLine;
-                        str += "Key_W : " + Key_W + Environment.NewLine;
-                        str += "Key_X : " + Key_X + Environment.NewLine;
-                        str += "Key_Y : " + Key_Y + Environment.NewLine;
-                        str += "Key_Z : " + Key_Z + Environment.NewLine;
-                        str += "Key_F1 : " + Key_F1 + Environment.NewLine;
-                        str += "Key_F2 : " + Key_F2 + Environment.NewLine;
-                        str += "Key_F3 : " + Key_F3 + Environment.NewLine;
-                        str += "Key_F4 : " + Key_F4 + Environment.NewLine;
-                        str += "Key_F5 : " + Key_F5 + Environment.NewLine;
-                        str += "Key_F6 : " + Key_F6 + Environment.NewLine;
-                        str += "Key_F7 : " + Key_F7 + Environment.NewLine;
-                        str += "Key_F8 : " + Key_F8 + Environment.NewLine;
-                        str += "Key_F9 : " + Key_F9 + Environment.NewLine;
-                        str += "Key_F10 : " + Key_F10 + Environment.NewLine;
-                        str += "Key_F11 : " + Key_F11 + Environment.NewLine;
-                        str += "Key_F12 : " + Key_F12 + Environment.NewLine;
-                        str += "Key_F13 : " + Key_F13 + Environment.NewLine;
-                        str += "Key_F14 : " + Key_F14 + Environment.NewLine;
-                        str += "Key_F15 : " + Key_F15 + Environment.NewLine;
-                        str += "Key_F16 : " + Key_F16 + Environment.NewLine;
-                        str += "Key_F17 : " + Key_F17 + Environment.NewLine;
-                        str += "Key_F18 : " + Key_F18 + Environment.NewLine;
-                        str += "Key_F19 : " + Key_F19 + Environment.NewLine;
-                        str += "Key_F20 : " + Key_F20 + Environment.NewLine;
-                        str += "Key_F21 : " + Key_F21 + Environment.NewLine;
-                        str += "Key_F22 : " + Key_F22 + Environment.NewLine;
-                        str += "Key_F23 : " + Key_F23 + Environment.NewLine;
-                        str += "Key_F24 : " + Key_F24 + Environment.NewLine;
-                        str += "Key_NUMPAD0 : " + Key_NUMPAD0 + Environment.NewLine;
-                        str += "Key_NUMPAD1 : " + Key_NUMPAD1 + Environment.NewLine;
-                        str += "Key_NUMPAD2 : " + Key_NUMPAD2 + Environment.NewLine;
-                        str += "Key_NUMPAD3 : " + Key_NUMPAD3 + Environment.NewLine;
-                        str += "Key_NUMPAD4 : " + Key_NUMPAD4 + Environment.NewLine;
-                        str += "Key_NUMPAD5 : " + Key_NUMPAD5 + Environment.NewLine;
-                        str += "Key_NUMPAD6 : " + Key_NUMPAD6 + Environment.NewLine;
-                        str += "Key_NUMPAD7 : " + Key_NUMPAD7 + Environment.NewLine;
-                        str += "Key_NUMPAD8 : " + Key_NUMPAD8 + Environment.NewLine;
-                        str += "Key_NUMPAD9 : " + Key_NUMPAD9 + Environment.NewLine;
-                        str += "Key_LWIN : " + Key_LWIN + Environment.NewLine;
-                        str += "Key_RWIN : " + Key_RWIN + Environment.NewLine;
-                        str += "Key_APPS : " + Key_APPS + Environment.NewLine;
-                        str += "Key_SLEEP : " + Key_SLEEP + Environment.NewLine;
-                        str += "Key_LBUTTON : " + Key_LBUTTON + Environment.NewLine;
-                        str += "Key_RBUTTON : " + Key_RBUTTON + Environment.NewLine;
-                        str += "Key_CANCEL : " + Key_CANCEL + Environment.NewLine;
-                        str += "Key_MBUTTON : " + Key_MBUTTON + Environment.NewLine;
-                        str += "Key_XBUTTON1 : " + Key_XBUTTON1 + Environment.NewLine;
-                        str += "Key_XBUTTON2 : " + Key_XBUTTON2 + Environment.NewLine;
-                        str += "Key_BACK : " + Key_BACK + Environment.NewLine;
-                        str += "Key_Tab : " + Key_Tab + Environment.NewLine;
-                        str += "Key_CLEAR : " + Key_CLEAR + Environment.NewLine;
-                        str += "Key_Return : " + Key_Return + Environment.NewLine;
-                        str += "Key_SHIFT : " + Key_SHIFT + Environment.NewLine;
-                        str += "Key_CONTROL : " + Key_CONTROL + Environment.NewLine;
-                        str += "Key_MENU : " + Key_MENU + Environment.NewLine;
-                        str += "Key_PAUSE : " + Key_PAUSE + Environment.NewLine;
-                        str += "Key_CAPITAL : " + Key_CAPITAL + Environment.NewLine;
-                        str += "Key_KANA : " + Key_KANA + Environment.NewLine;
-                        str += "Key_HANGEUL : " + Key_HANGEUL + Environment.NewLine;
-                        str += "Key_HANGUL : " + Key_HANGUL + Environment.NewLine;
-                        str += "Key_JUNJA : " + Key_JUNJA + Environment.NewLine;
-                        str += "Key_FINAL : " + Key_FINAL + Environment.NewLine;
-                        str += "Key_HANJA : " + Key_HANJA + Environment.NewLine;
-                        str += "Key_KANJI : " + Key_KANJI + Environment.NewLine;
-                        str += "Key_Escape : " + Key_Escape + Environment.NewLine;
-                        str += "Key_CONVERT : " + Key_CONVERT + Environment.NewLine;
-                        str += "Key_NONCONVERT : " + Key_NONCONVERT + Environment.NewLine;
-                        str += "Key_ACCEPT : " + Key_ACCEPT + Environment.NewLine;
-                        str += "Key_MODECHANGE : " + Key_MODECHANGE + Environment.NewLine;
-                        str += "Key_Space : " + Key_Space + Environment.NewLine;
-                        str += "Key_PRIOR : " + Key_PRIOR + Environment.NewLine;
-                        str += "Key_NEXT : " + Key_NEXT + Environment.NewLine;
-                        str += "Key_END : " + Key_END + Environment.NewLine;
-                        str += "Key_HOME : " + Key_HOME + Environment.NewLine;
-                        str += "Key_LEFT : " + Key_LEFT + Environment.NewLine;
-                        str += "Key_UP : " + Key_UP + Environment.NewLine;
-                        str += "Key_RIGHT : " + Key_RIGHT + Environment.NewLine;
-                        str += "Key_DOWN : " + Key_DOWN + Environment.NewLine;
-                        str += "Key_SELECT : " + Key_SELECT + Environment.NewLine;
-                        str += "Key_PRINT : " + Key_PRINT + Environment.NewLine;
-                        str += "Key_EXECUTE : " + Key_EXECUTE + Environment.NewLine;
-                        str += "Key_SNAPSHOT : " + Key_SNAPSHOT + Environment.NewLine;
-                        str += "Key_INSERT : " + Key_INSERT + Environment.NewLine;
-                        str += "Key_DELETE : " + Key_DELETE + Environment.NewLine;
-                        str += "Key_HELP : " + Key_HELP + Environment.NewLine;
-                        str += "Key_APOSTROPHE : " + Key_APOSTROPHE + Environment.NewLine;
-                        str += "Key_MULTIPLY : " + Key_MULTIPLY + Environment.NewLine;
-                        str += "Key_ADD : " + Key_ADD + Environment.NewLine;
-                        str += "Key_SEPARATOR : " + Key_SEPARATOR + Environment.NewLine;
-                        str += "Key_SUBTRACT : " + Key_SUBTRACT + Environment.NewLine;
-                        str += "Key_DECIMAL : " + Key_DECIMAL + Environment.NewLine;
-                        str += "Key_DIVIDE : " + Key_DIVIDE + Environment.NewLine;
-                        str += "Key_NUMLOCK : " + Key_NUMLOCK + Environment.NewLine;
-                        str += "Key_SCROLL : " + Key_SCROLL + Environment.NewLine;
-                        str += "Key_LeftShift : " + Key_LeftShift + Environment.NewLine;
-                        str += "Key_RightShift : " + Key_RightShift + Environment.NewLine;
-                        str += "Key_LeftControl : " + Key_LeftControl + Environment.NewLine;
-                        str += "Key_RightControl : " + Key_RightControl + Environment.NewLine;
-                        str += "Key_LMENU : " + Key_LMENU + Environment.NewLine;
-                        str += "Key_RMENU : " + Key_RMENU + Environment.NewLine;
+                        if (data[1] == " Key_A")
+                        {
+                            SendA = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_B")
+                        {
+                            SendB = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_C")
+                        {
+                            SendC = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_D")
+                        {
+                            SendD = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_E")
+                        {
+                            SendE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F")
+                        {
+                            SendF = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_G")
+                        {
+                            SendG = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_H")
+                        {
+                            SendH = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_I")
+                        {
+                            SendI = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_J")
+                        {
+                            SendJ = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_K")
+                        {
+                            SendK = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_L")
+                        {
+                            SendL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_M")
+                        {
+                            SendM = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_N")
+                        {
+                            SendN = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_O")
+                        {
+                            SendO = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_P")
+                        {
+                            SendP = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Q")
+                        {
+                            SendQ = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_R")
+                        {
+                            SendR = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_S")
+                        {
+                            SendS = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_T")
+                        {
+                            SendT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_U")
+                        {
+                            SendU = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_V")
+                        {
+                            SendV = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_W")
+                        {
+                            SendW = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_X")
+                        {
+                            SendX = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Y")
+                        {
+                            SendY = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Z")
+                        {
+                            SendZ = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F1")
+                        {
+                            SendF1 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F2")
+                        {
+                            SendF2 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F3")
+                        {
+                            SendF3 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F4")
+                        {
+                            SendF4 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F5")
+                        {
+                            SendF5 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F6")
+                        {
+                            SendF6 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F7")
+                        {
+                            SendF7 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F8")
+                        {
+                            SendF8 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F9")
+                        {
+                            SendF9 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F10")
+                        {
+                            SendF10 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F11")
+                        {
+                            SendF11 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F12")
+                        {
+                            SendF12 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F13")
+                        {
+                            SendF13 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F14")
+                        {
+                            SendF14 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F15")
+                        {
+                            SendF15 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F16")
+                        {
+                            SendF16 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F17")
+                        {
+                            SendF17 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F18")
+                        {
+                            SendF18 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F19")
+                        {
+                            SendF19 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F20")
+                        {
+                            SendF20 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F21")
+                        {
+                            SendF21 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F22")
+                        {
+                            SendF22 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F23")
+                        {
+                            SendF23 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_F24")
+                        {
+                            SendF24 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD0")
+                        {
+                            SendNUMPAD0 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD1")
+                        {
+                            SendNUMPAD1 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD2")
+                        {
+                            SendNUMPAD2 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD3")
+                        {
+                            SendNUMPAD3 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD4")
+                        {
+                            SendNUMPAD4 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD5")
+                        {
+                            SendNUMPAD5 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD6")
+                        {
+                            SendNUMPAD6 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD7")
+                        {
+                            SendNUMPAD7 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD8")
+                        {
+                            SendNUMPAD8 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMPAD9")
+                        {
+                            SendNUMPAD9 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LWIN")
+                        {
+                            SendLWIN = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RWIN")
+                        {
+                            SendRWIN = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_APPS")
+                        {
+                            SendAPPS = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SLEEP")
+                        {
+                            SendSLEEP = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LBUTTON")
+                        {
+                            SendLButton = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RBUTTON")
+                        {
+                            SendRButton = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_CANCEL")
+                        {
+                            SendCancel = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_MBUTTON")
+                        {
+                            SendMBUTTON = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_XBUTTON1")
+                        {
+                            SendXBUTTON1 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_XBUTTON2")
+                        {
+                            SendXBUTTON2 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_BACK")
+                        {
+                            SendBack = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Tab")
+                        {
+                            SendTab = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_CLEAR")
+                        {
+                            SendClear = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Return")
+                        {
+                            SendReturn = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SHIFT")
+                        {
+                            SendSHIFT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_CONTROL")
+                        {
+                            SendCONTROL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_MENU")
+                        {
+                            SendMENU = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_PAUSE")
+                        {
+                            SendPAUSE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_CAPITAL")
+                        {
+                            SendCAPITAL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_KANA")
+                        {
+                            SendKANA = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_HANGEUL")
+                        {
+                            SendHANGEUL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_HANGUL")
+                        {
+                            SendHANGUL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_JUNJA")
+                        {
+                            SendJUNJA = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_FINAL")
+                        {
+                            SendFINAL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_HANJA")
+                        {
+                            SendHANJA = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_KANJI")
+                        {
+                            SendKANJI = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Escape")
+                        {
+                            SendEscape = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_CONVERT")
+                        {
+                            SendCONVERT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NONCONVERT")
+                        {
+                            SendNONCONVERT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_ACCEPT")
+                        {
+                            SendACCEPT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_MODECHANGE")
+                        {
+                            SendMODECHANGE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_Space")
+                        {
+                            SendSpace = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_PRIOR")
+                        {
+                            SendPRIOR = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NEXT")
+                        {
+                            SendNEXT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_END")
+                        {
+                            SendEND = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_HOME")
+                        {
+                            SendHOME = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LEFT")
+                        {
+                            SendLEFT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_UP")
+                        {
+                            SendUP = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RIGHT")
+                        {
+                            SendRIGHT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_DOWN")
+                        {
+                            SendDOWN = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SELECT")
+                        {
+                            SendSELECT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_PRINT")
+                        {
+                            SendPRINT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_EXECUTE")
+                        {
+                            SendEXECUTE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SNAPSHOT")
+                        {
+                            SendSNAPSHOT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_INSERT")
+                        {
+                            SendINSERT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_DELETE")
+                        {
+                            SendDELETE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_HELP")
+                        {
+                            SendHELP = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_APOSTROPHE")
+                        {
+                            SendAPOSTROPHE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_MULTIPLY")
+                        {
+                            SendMULTIPLY = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_ADD")
+                        {
+                            SendADD = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SEPARATOR")
+                        {
+                            SendSEPARATOR = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SUBTRACT")
+                        {
+                            SendSUBTRACT = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_DECIMAL")
+                        {
+                            SendDECIMAL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_DIVIDE")
+                        {
+                            SendDIVIDE = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_NUMLOCK")
+                        {
+                            SendNUMLOCK = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_SCROLL")
+                        {
+                            SendSCROLL = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LeftShift")
+                        {
+                            SendLeftShift = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RightShift")
+                        {
+                            SendRightShift = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LeftControl")
+                        {
+                            SendLeftControl = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RightControl")
+                        {
+                            SendRightControl = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_LMENU")
+                        {
+                            SendLMENU = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_RMENU")
+                        {
+                            SendRMENU = bool.Parse(data[2]);
+                        }
                         if (enablemouse)
                         {
                             if (data[1] == " CursorX")
@@ -1038,12 +1404,13 @@ namespace PlayAndReplay
         {
             MouseMoveX = 0;
             MouseMoveY = 0;
-            MouseDesktopX = 0;
-            MouseDesktopY = 0;
             MouseAbsX = 0;
             MouseAbsY = 0;
-            SendRightClick = false;
+            MouseDesktopX = 0;
+            MouseDesktopY = 0;
             SendLeftClick = false;
+            SendRightClick = false;
+            SendMiddleClick = false;
             SendD = false;
             SendQ = false;
             SendZ = false;
