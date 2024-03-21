@@ -192,7 +192,11 @@ namespace PlayAndReplay
         }
         private void Save()
         {
-            string RecordFileName = "Replay_" + DateTime.Now.ToString().Replace("/", "_").Replace(":", "_").Replace(" ", "_");
+            if (!Directory.Exists("Replays"))
+            {
+                Directory.CreateDirectory("Replays");
+            }
+            string RecordFileName = Application.StartupPath + @"\Replays\Replay_" + DateTime.Now.ToString().Replace("/", "_").Replace(":", "_").Replace(" ", "_");
             richTextBox1.SaveFile(RecordFileName, RichTextBoxStreamType.RichText);
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
