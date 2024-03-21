@@ -655,54 +655,146 @@ namespace PlayAndReplay
                 ValueChange[95] = kh.Key_KANJI ? 1 : -1;
                 if (ValueChange._ValueChange[95] != 0)
                     richTextBox1.AppendText(elapseplay + "; Key_KANJI; " + kh.Key_KANJI + "; \r\n");
-                str += "Key_Escape : " + Key_Escape + Environment.NewLine;
-                str += "Key_CONVERT : " + Key_CONVERT + Environment.NewLine;
-                str += "Key_NONCONVERT : " + Key_NONCONVERT + Environment.NewLine;
-                str += "Key_ACCEPT : " + Key_ACCEPT + Environment.NewLine;
-                str += "Key_MODECHANGE : " + Key_MODECHANGE + Environment.NewLine;
-                str += "Key_Space : " + Key_Space + Environment.NewLine;
-                str += "Key_PRIOR : " + Key_PRIOR + Environment.NewLine;
-                str += "Key_NEXT : " + Key_NEXT + Environment.NewLine;
-                str += "Key_END : " + Key_END + Environment.NewLine;
-                str += "Key_HOME : " + Key_HOME + Environment.NewLine;
-                str += "Key_LEFT : " + Key_LEFT + Environment.NewLine;
-                str += "Key_UP : " + Key_UP + Environment.NewLine;
-                str += "Key_RIGHT : " + Key_RIGHT + Environment.NewLine;
-                str += "Key_DOWN : " + Key_DOWN + Environment.NewLine;
-                str += "Key_SELECT : " + Key_SELECT + Environment.NewLine;
-                str += "Key_PRINT : " + Key_PRINT + Environment.NewLine;
-                str += "Key_EXECUTE : " + Key_EXECUTE + Environment.NewLine;
-                str += "Key_SNAPSHOT : " + Key_SNAPSHOT + Environment.NewLine;
-                str += "Key_INSERT : " + Key_INSERT + Environment.NewLine;
-                str += "Key_DELETE : " + Key_DELETE + Environment.NewLine;
-                str += "Key_HELP : " + Key_HELP + Environment.NewLine;
-                str += "Key_APOSTROPHE : " + Key_APOSTROPHE + Environment.NewLine;
-                str += "Key_MULTIPLY : " + Key_MULTIPLY + Environment.NewLine;
-                str += "Key_ADD : " + Key_ADD + Environment.NewLine;
-                str += "Key_SEPARATOR : " + Key_SEPARATOR + Environment.NewLine;
-                str += "Key_SUBTRACT : " + Key_SUBTRACT + Environment.NewLine;
-                str += "Key_DECIMAL : " + Key_DECIMAL + Environment.NewLine;
-                str += "Key_DIVIDE : " + Key_DIVIDE + Environment.NewLine;
-                str += "Key_NUMLOCK : " + Key_NUMLOCK + Environment.NewLine;
-                str += "Key_SCROLL : " + Key_SCROLL + Environment.NewLine;
-                str += "Key_LeftShift : " + Key_LeftShift + Environment.NewLine;
-                str += "Key_RightShift : " + Key_RightShift + Environment.NewLine;
-                str += "Key_LeftControl : " + Key_LeftControl + Environment.NewLine;
-                str += "Key_RightControl : " + Key_RightControl + Environment.NewLine;
-                str += "Key_LMENU : " + Key_LMENU + Environment.NewLine;
-                str += "Key_RMENU : " + Key_RMENU + Environment.NewLine;
+                ValueChange[96] = kh.Key_Escape ? 1 : -1;
+                if (ValueChange._ValueChange[96] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_Escape; " + kh.Key_Escape + "; \r\n");
+                ValueChange[97] = kh.Key_CONVERT ? 1 : -1;
+                if (ValueChange._ValueChange[97] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_CONVERT; " + kh.Key_CONVERT + "; \r\n");
+                ValueChange[98] = kh.Key_NONCONVERT ? 1 : -1;
+                if (ValueChange._ValueChange[98] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_NONCONVERT; " + kh.Key_NONCONVERT + "; \r\n");
+                ValueChange[99] = kh.Key_ACCEPT ? 1 : -1;
+                if (ValueChange._ValueChange[99] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_ACCEPT; " + kh.Key_ACCEPT + "; \r\n");
+                ValueChange[100] = kh.Key_MODECHANGE ? 1 : -1;
+                if (ValueChange._ValueChange[100] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_MODECHANGE; " + kh.Key_MODECHANGE + "; \r\n");
+                ValueChange[101] = kh.Key_Space ? 1 : -1;
+                if (ValueChange._ValueChange[101] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_Space; " + kh.Key_Space + "; \r\n");
+                ValueChange[102] = kh.Key_PRIOR ? 1 : -1;
+                if (ValueChange._ValueChange[102] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_PRIOR; " + kh.Key_PRIOR + "; \r\n");
+                ValueChange[103] = kh.Key_NEXT ? 1 : -1;
+                if (ValueChange._ValueChange[103] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_NEXT; " + kh.Key_NEXT + "; \r\n");
+                ValueChange[104] = kh.Key_END ? 1 : -1;
+                if (ValueChange._ValueChange[104] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_END; " + kh.Key_END + "; \r\n");
+                ValueChange[105] = kh.Key_HOME ? 1 : -1;
+                if (ValueChange._ValueChange[105] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_HOME; " + kh.Key_HOME + "; \r\n");
+                ValueChange[106] = kh.Key_LEFT ? 1 : -1;
+                if (ValueChange._ValueChange[106] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_LEFT; " + kh.Key_LEFT + "; \r\n");
+                ValueChange[107] = kh.Key_UP ? 1 : -1;
+                if (ValueChange._ValueChange[107] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_UP; " + kh.Key_UP + "; \r\n");
+                ValueChange[108] = kh.Key_RIGHT ? 1 : -1;
+                if (ValueChange._ValueChange[108] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_RIGHT; " + kh.Key_RIGHT + "; \r\n");
+                ValueChange[109] = kh.Key_DOWN ? 1 : -1;
+                if (ValueChange._ValueChange[109] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_DOWN; " + kh.Key_DOWN + "; \r\n");
+                ValueChange[110] = kh.Key_SELECT ? 1 : -1;
+                if (ValueChange._ValueChange[110] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_SELECT; " + kh.Key_SELECT + "; \r\n");
+                ValueChange[111] = kh.Key_PRINT ? 1 : -1;
+                if (ValueChange._ValueChange[111] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_PRINT; " + kh.Key_PRINT + "; \r\n");
+                ValueChange[112] = kh.Key_EXECUTE ? 1 : -1;
+                if (ValueChange._ValueChange[112] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_EXECUTE; " + kh.Key_EXECUTE + "; \r\n");
+                ValueChange[113] = kh.Key_SNAPSHOT ? 1 : -1;
+                if (ValueChange._ValueChange[113] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_SNAPSHOT; " + kh.Key_SNAPSHOT + "; \r\n");
+                ValueChange[114] = kh.Key_INSERT ? 1 : -1;
+                if (ValueChange._ValueChange[114] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_INSERT; " + kh.Key_INSERT + "; \r\n");
+                ValueChange[115] = kh.Key_DELETE ? 1 : -1;
+                if (ValueChange._ValueChange[115] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_DELETE; " + kh.Key_DELETE + "; \r\n");
+                ValueChange[116] = kh.Key_HELP ? 1 : -1;
+                if (ValueChange._ValueChange[116] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_HELP; " + kh.Key_HELP + "; \r\n");
+                ValueChange[117] = kh.Key_APOSTROPHE ? 1 : -1;
+                if (ValueChange._ValueChange[117] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_APOSTROPHE; " + kh.Key_APOSTROPHE + "; \r\n");
+                ValueChange[118] = kh.Key_MULTIPLY ? 1 : -1;
+                if (ValueChange._ValueChange[118] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_MULTIPLY; " + kh.Key_MULTIPLY + "; \r\n");
+                ValueChange[119] = kh.Key_ADD ? 1 : -1;
+                if (ValueChange._ValueChange[119] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_ADD; " + kh.Key_ADD + "; \r\n");
+                ValueChange[120] = kh.Key_SEPARATOR ? 1 : -1;
+                if (ValueChange._ValueChange[120] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_SEPARATOR; " + kh.Key_SEPARATOR + "; \r\n");
+                ValueChange[121] = kh.Key_SUBTRACT ? 1 : -1;
+                if (ValueChange._ValueChange[121] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_SUBTRACT; " + kh.Key_SUBTRACT + "; \r\n");
+                ValueChange[122] = kh.Key_DECIMAL ? 1 : -1;
+                if (ValueChange._ValueChange[122] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_DECIMAL; " + kh.Key_DECIMAL + "; \r\n");
+                ValueChange[123] = kh.Key_DIVIDE ? 1 : -1;
+                if (ValueChange._ValueChange[123] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_DIVIDE; " + kh.Key_DIVIDE + "; \r\n");
+                ValueChange[124] = kh.Key_NUMLOCK ? 1 : -1;
+                if (ValueChange._ValueChange[124] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_NUMLOCK; " + kh.Key_NUMLOCK + "; \r\n");
+                ValueChange[125] = kh.Key_SCROLL ? 1 : -1;
+                if (ValueChange._ValueChange[125] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_SCROLL; " + kh.Key_SCROLL + "; \r\n");
+                ValueChange[126] = kh.Key_LeftShift ? 1 : -1;
+                if (ValueChange._ValueChange[126] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_LeftShift; " + kh.Key_LeftShift + "; \r\n");
+                ValueChange[127] = kh.Key_RightShift ? 1 : -1;
+                if (ValueChange._ValueChange[127] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_RightShift; " + kh.Key_RightShift + "; \r\n");
+                ValueChange[128] = kh.Key_LeftControl ? 1 : -1;
+                if (ValueChange._ValueChange[128] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_LeftControl; " + kh.Key_LeftControl + "; \r\n");
+                ValueChange[129] = kh.Key_RightControl ? 1 : -1;
+                if (ValueChange._ValueChange[129] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_RightControl; " + kh.Key_RightControl + "; \r\n");
+                ValueChange[130] = kh.Key_LMENU ? 1 : -1;
+                if (ValueChange._ValueChange[130] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_LMENU; " + kh.Key_LMENU + "; \r\n");
+                ValueChange[131] = kh.Key_RMENU ? 1 : -1;
+                if (ValueChange._ValueChange[131] != 0)
+                    richTextBox1.AppendText(elapseplay + "; Key_RMENU; " + kh.Key_RMENU + "; \r\n");
                 if (enablemouse)
                 {
-                    string str = "CursorX : " + CursorX + Environment.NewLine;
-                    str += "CursorY : " + CursorY + Environment.NewLine;
-                    str += "MouseX : " + MouseX + Environment.NewLine;
-                    str += "MouseY : " + MouseY + Environment.NewLine;
-                    str += "MouseZ : " + MouseZ + Environment.NewLine;
-                    str += "MouseRightButton : " + MouseRightButton + Environment.NewLine;
-                    str += "MouseLeftButton : " + MouseLeftButton + Environment.NewLine;
-                    str += "MouseMiddleButton : " + MouseMiddleButton + Environment.NewLine;
-                    str += "MouseXButton : " + MouseXButton + Environment.NewLine;
-                    str += "MouseButtonX : " + MouseButtonX + Environment.NewLine;
+                    ValueChange[132] = mh.CursorX;
+                    if (ValueChange._ValueChange[132] != 0)
+                        richTextBox1.AppendText(elapseplay + "; CursorX; " + mh.CursorX + "; \r\n");
+                    ValueChange[133] = mh.CursorY;
+                    if (ValueChange._ValueChange[133] != 0)
+                        richTextBox1.AppendText(elapseplay + "; CursorY; " + mh.CursorY + "; \r\n");
+                    ValueChange[134] = mh.MouseX;
+                    if (ValueChange._ValueChange[134] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseX; " + mh.MouseX + "; \r\n");
+                    ValueChange[135] = mh.MouseY;
+                    if (ValueChange._ValueChange[135] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseY; " + mh.MouseY + "; \r\n");
+                    ValueChange[136] = mh.MouseZ;
+                    if (ValueChange._ValueChange[136] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseZ; " + mh.MouseZ + "; \r\n");
+                    ValueChange[137] = mh.MouseRightButton ? 1 : -1;
+                    if (ValueChange._ValueChange[137] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseRightButton; " + mh.MouseRightButton + "; \r\n");
+                    ValueChange[138] = mh.MouseLeftButton ? 1 : -1;
+                    if (ValueChange._ValueChange[138] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseLeftButton; " + mh.MouseLeftButton + "; \r\n");
+                    ValueChange[139] = mh.MouseMiddleButton ? 1 : -1;
+                    if (ValueChange._ValueChange[139] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseMiddleButton; " + mh.MouseMiddleButton + "; \r\n");
+                    ValueChange[140] = mh.MouseXButton ? 1 : -1;
+                    if (ValueChange._ValueChange[140] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseXButton; " + mh.MouseXButton + "; \r\n");
+                    ValueChange[141] = mh.MouseButtonX;
+                    if (ValueChange._ValueChange[141] != 0)
+                        richTextBox1.AppendText(elapseplay + "; MouseButtonX; " + mh.MouseButtonX + "; \r\n");
                 }
                 Thread.Sleep(1);
             }
@@ -728,15 +820,42 @@ namespace PlayAndReplay
                         {
                             Send0 = bool.Parse(data[2]);
                         }
-                        str += "Key_1 : " + Key_1 + Environment.NewLine;
-                        str += "Key_2 : " + Key_2 + Environment.NewLine;
-                        str += "Key_3 : " + Key_3 + Environment.NewLine;
-                        str += "Key_4 : " + Key_4 + Environment.NewLine;
-                        str += "Key_5 : " + Key_5 + Environment.NewLine;
-                        str += "Key_6 : " + Key_6 + Environment.NewLine;
-                        str += "Key_7 : " + Key_7 + Environment.NewLine;
-                        str += "Key_8 : " + Key_8 + Environment.NewLine;
-                        str += "Key_9 : " + Key_9 + Environment.NewLine;
+                        if (data[1] == " Key_1")
+                        {
+                            Send1 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_2")
+                        {
+                            Send2 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_3")
+                        {
+                            Send3 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_4")
+                        {
+                            Send4 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_5")
+                        {
+                            Send5 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_6")
+                        {
+                            Send6 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_7")
+                        {
+                            Send7 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_8")
+                        {
+                            Send8 = bool.Parse(data[2]);
+                        }
+                        if (data[1] == " Key_9")
+                        {
+                            Send9 = bool.Parse(data[2]);
+                        }
                         str += "Key_A : " + Key_A + Environment.NewLine;
                         str += "Key_B : " + Key_B + Environment.NewLine;
                         str += "Key_C : " + Key_C + Environment.NewLine;
@@ -861,16 +980,39 @@ namespace PlayAndReplay
                         str += "Key_RMENU : " + Key_RMENU + Environment.NewLine;
                         if (enablemouse)
                         {
-                            string str = "CursorX : " + CursorX + Environment.NewLine;
-                            str += "CursorY : " + CursorY + Environment.NewLine;
-                            str += "MouseX : " + MouseX + Environment.NewLine;
-                            str += "MouseY : " + MouseY + Environment.NewLine;
-                            str += "MouseZ : " + MouseZ + Environment.NewLine;
-                            str += "MouseRightButton : " + MouseRightButton + Environment.NewLine;
-                            str += "MouseLeftButton : " + MouseLeftButton + Environment.NewLine;
-                            str += "MouseMiddleButton : " + MouseMiddleButton + Environment.NewLine;
-                            str += "MouseXButton : " + MouseXButton + Environment.NewLine;
-                            str += "MouseButtonX : " + MouseButtonX + Environment.NewLine;
+                            if (data[1] == " CursorX")
+                            {
+                                MouseDesktopX = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " CursorY")
+                            {
+                                MouseDesktopY = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " MouseX")
+                            {
+                                MouseDesktopX = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " MouseY")
+                            {
+                                MouseDesktopY = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " MouseZ")
+                            {
+                                SendWheelUp = Convert.ToSingle(data[2]) > 0 ? true : false;
+                                SendWheelDown = Convert.ToSingle(data[2]) < 0 ? true : false;
+                            }
+                            if (data[1] == " MouseRightButton")
+                            {
+                                SendRightClick = bool.Parse(data[2]);
+                            }
+                            if (data[1] == " MouseLeftButton")
+                            {
+                                SendLeftClick = bool.Parse(data[2]);
+                            }
+                            if (data[1] == " MouseMiddleButton")
+                            {
+                                SendMiddleClick = bool.Parse(data[2]);
+                            }
                         }
                     }
                 }
@@ -886,6 +1028,8 @@ namespace PlayAndReplay
             MouseDesktopY = 0;
             MouseAbsX = 0;
             MouseAbsY = 0;
+            SendRightClick = false;
+            SendLeftClick = false;
             SendD = false;
             SendQ = false;
             SendZ = false;
@@ -914,8 +1058,6 @@ namespace PlayAndReplay
             SendU = false;
             SendX = false;
             SendC = false;
-            SendRightClick = false;
-            SendLeftClick = false;
         }
     }
 }
