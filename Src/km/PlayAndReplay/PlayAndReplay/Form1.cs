@@ -108,7 +108,7 @@ namespace PlayAndReplay
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.";
+            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";
             const string caption = "About";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -173,8 +173,18 @@ namespace PlayAndReplay
                 {
                     Replay();
                 }
+                valchanged(2, kh.Key_LeftControl & kh.Key_S);
+                if (wd[2] == 1)
+                {
+                    Save();
+                }
                 Thread.Sleep(50);
             }
+        }
+        private void Save()
+        {
+            string RecordFileName = "Replay_" + DateTime.Now.ToString().Replace("/", "_").Replace(":", "_").Replace(" ", "_");
+            richTextBox1.SaveFile(RecordFileName, RichTextBoxStreamType.RichText);
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
