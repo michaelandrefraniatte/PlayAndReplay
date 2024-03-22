@@ -29,8 +29,8 @@ namespace PlayAndReplay
         private static DialogResult result;
         private static string filename = "";
         private static bool play, replay, running, enablemouse;
-        private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch();
-        private static double elapseplay, elapsereplay;
+        private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch(), watchrepeat = new Stopwatch();
+        private static double elapseplay, elapsereplay, elapserepeat;
         static string KeyboardMouseDriverType = "sendinput"; static double MouseMoveX; static double MouseMoveY; static double MouseAbsX; static double MouseAbsY; static double MouseDesktopX; static double MouseDesktopY; static bool SendLeftClick; static bool SendRightClick; static bool SendMiddleClick; static bool SendWheelUp; static bool SendWheelDown; static bool SendLeft; static bool SendRight; static bool SendUp; static bool SendDown; static bool SendLButton; static bool SendRButton; static bool SendCancel; static bool SendMBUTTON; static bool SendXBUTTON1; static bool SendXBUTTON2; static bool SendBack; static bool SendTab; static bool SendClear; static bool SendReturn; static bool SendSHIFT; static bool SendCONTROL; static bool SendMENU; static bool SendPAUSE; static bool SendCAPITAL; static bool SendKANA; static bool SendHANGEUL; static bool SendHANGUL; static bool SendJUNJA; static bool SendFINAL; static bool SendHANJA; static bool SendKANJI; static bool SendEscape; static bool SendCONVERT; static bool SendNONCONVERT; static bool SendACCEPT; static bool SendMODECHANGE; static bool SendSpace; static bool SendPRIOR; static bool SendNEXT; static bool SendEND; static bool SendHOME; static bool SendLEFT; static bool SendUP; static bool SendRIGHT; static bool SendDOWN; static bool SendSELECT; static bool SendPRINT; static bool SendEXECUTE; static bool SendSNAPSHOT; static bool SendINSERT; static bool SendDELETE; static bool SendHELP; static bool SendAPOSTROPHE; static bool Send0; static bool Send1; static bool Send2; static bool Send3; static bool Send4; static bool Send5; static bool Send6; static bool Send7; static bool Send8; static bool Send9; static bool SendA; static bool SendB; static bool SendC; static bool SendD; static bool SendE; static bool SendF; static bool SendG; static bool SendH; static bool SendI; static bool SendJ; static bool SendK; static bool SendL; static bool SendM; static bool SendN; static bool SendO; static bool SendP; static bool SendQ; static bool SendR; static bool SendS; static bool SendT; static bool SendU; static bool SendV; static bool SendW; static bool SendX; static bool SendY; static bool SendZ; static bool SendLWIN; static bool SendRWIN; static bool SendAPPS; static bool SendSLEEP; static bool SendNUMPAD0; static bool SendNUMPAD1; static bool SendNUMPAD2; static bool SendNUMPAD3; static bool SendNUMPAD4; static bool SendNUMPAD5; static bool SendNUMPAD6; static bool SendNUMPAD7; static bool SendNUMPAD8; static bool SendNUMPAD9; static bool SendMULTIPLY; static bool SendADD; static bool SendSEPARATOR; static bool SendSUBTRACT; static bool SendDECIMAL; static bool SendDIVIDE; static bool SendF1; static bool SendF2; static bool SendF3; static bool SendF4; static bool SendF5; static bool SendF6; static bool SendF7; static bool SendF8; static bool SendF9; static bool SendF10; static bool SendF11; static bool SendF12; static bool SendF13; static bool SendF14; static bool SendF15; static bool SendF16; static bool SendF17; static bool SendF18; static bool SendF19; static bool SendF20; static bool SendF21; static bool SendF22; static bool SendF23; static bool SendF24; static bool SendNUMLOCK; static bool SendSCROLL; static bool SendLeftShift; static bool SendRightShift; static bool SendLeftControl; static bool SendRightControl; static bool SendLMENU; static bool SendRMENU;
         private int linecount = 0;
         private KeyboardHooks kh = new KeyboardHooks();
@@ -1501,7 +1501,17 @@ namespace PlayAndReplay
                     {
                         linecount = 0;
                         watchreplay.Stop();
-                        Thread.Sleep((int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000));
+                        watchrepeat = new Stopwatch();
+                        watchrepeat.Start();
+                        elapserepeat = 0;
+                        while (elapserepeat < (int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000))
+                        {
+                            if (!replay)
+                                break;
+                            elapserepeat = (double)watchrepeat.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
+                            Thread.Sleep(100);
+                        }
+                        watchrepeat.Stop();
                         watchreplay = new Stopwatch();
                         watchreplay.Start();
                     }

@@ -32,8 +32,8 @@ namespace PlayAndReplay
         private static DialogResult result;
         private static string filename = "";
         private static bool play, replay, running, enablesticks;
-        private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch();
-        private static double elapseplay, elapsereplay;
+        private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch(), watchrepeat = new Stopwatch();
+        private static double elapseplay, elapsereplay, elapserepeat;
         private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
         private static double Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition;
         private int linecount = 0;
@@ -654,7 +654,17 @@ namespace PlayAndReplay
                     {
                         linecount = 0;
                         watchreplay.Stop();
-                        Thread.Sleep((int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000));
+                        watchrepeat = new Stopwatch();
+                        watchrepeat.Start();
+                        elapserepeat = 0;
+                        while (elapserepeat < (int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000))
+                        {
+                            if (!replay)
+                                break;
+                            elapserepeat = (double)watchrepeat.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
+                            Thread.Sleep(100);
+                        }
+                        watchrepeat.Stop();
                         watchreplay = new Stopwatch();
                         watchreplay.Start();
                     }
