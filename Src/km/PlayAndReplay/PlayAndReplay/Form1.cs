@@ -210,6 +210,7 @@ namespace PlayAndReplay
             {
                 createdfile.WriteLine(enableMouseToolStripMenuItem.Checked);
                 createdfile.WriteLine(emptyToolStripMenuItem.Text);
+                createdfile.WriteLine(sendinputToolStripMenuItem.Text);
                 createdfile.Close();
             }
         }
@@ -219,6 +220,7 @@ namespace PlayAndReplay
             {
                 enableMouseToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
                 emptyToolStripMenuItem.Text = file.ReadLine();
+                sendinputToolStripMenuItem.Text = file.ReadLine();
                 file.Close();
             }
         }
@@ -398,6 +400,7 @@ namespace PlayAndReplay
                 }
                 linecount = 0;
                 Init();
+                KeyboardMouseDriverType = sendinputToolStripMenuItem.Text;
                 enablemouse = enableMouseToolStripMenuItem.Checked;
                 watchreplay = new Stopwatch();
                 watchreplay.Start();
@@ -439,6 +442,7 @@ namespace PlayAndReplay
                 }
                 linecount = 0;
                 Init();
+                KeyboardMouseDriverType = sendinputToolStripMenuItem.Text;
                 enablemouse = enableMouseToolStripMenuItem.Checked;
                 watchreplay = new Stopwatch();
                 watchreplay.Start();

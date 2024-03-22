@@ -37,6 +37,8 @@
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enableMouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,8 +46,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kMDriverTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendinputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +109,8 @@
             // 
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.enableMouseToolStripMenuItem,
-            this.secondsBeforeRepeatToolStripMenuItem});
+            this.secondsBeforeRepeatToolStripMenuItem,
+            this.kMDriverTypeToolStripMenuItem});
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
             this.optionToolStripMenuItem.Text = "Option";
@@ -118,6 +121,20 @@
             this.enableMouseToolStripMenuItem.Name = "enableMouseToolStripMenuItem";
             this.enableMouseToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
             this.enableMouseToolStripMenuItem.Text = "Enable mouse";
+            // 
+            // secondsBeforeRepeatToolStripMenuItem
+            // 
+            this.secondsBeforeRepeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emptyToolStripMenuItem});
+            this.secondsBeforeRepeatToolStripMenuItem.Name = "secondsBeforeRepeatToolStripMenuItem";
+            this.secondsBeforeRepeatToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.secondsBeforeRepeatToolStripMenuItem.Text = "Seconds before repeat";
+            // 
+            // emptyToolStripMenuItem
+            // 
+            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
+            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.emptyToolStripMenuItem.Text = "empty";
             // 
             // playToolStripMenuItem
             // 
@@ -173,19 +190,19 @@
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
             // 
-            // secondsBeforeRepeatToolStripMenuItem
+            // kMDriverTypeToolStripMenuItem
             // 
-            this.secondsBeforeRepeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emptyToolStripMenuItem});
-            this.secondsBeforeRepeatToolStripMenuItem.Name = "secondsBeforeRepeatToolStripMenuItem";
-            this.secondsBeforeRepeatToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.secondsBeforeRepeatToolStripMenuItem.Text = "Seconds before repeat";
+            this.kMDriverTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendinputToolStripMenuItem});
+            this.kMDriverTypeToolStripMenuItem.Name = "kMDriverTypeToolStripMenuItem";
+            this.kMDriverTypeToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.kMDriverTypeToolStripMenuItem.Text = "KM driver type";
             // 
-            // emptyToolStripMenuItem
+            // sendinputToolStripMenuItem
             // 
-            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
-            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.emptyToolStripMenuItem.Text = "empty";
+            this.sendinputToolStripMenuItem.Name = "sendinputToolStripMenuItem";
+            this.sendinputToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.sendinputToolStripMenuItem.Text = "sendinput";
             // 
             // Form1
             // 
@@ -227,6 +244,8 @@
         private System.Windows.Forms.ToolStripMenuItem enableMouseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secondsBeforeRepeatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emptyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kMDriverTypeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sendinputToolStripMenuItem;
     }
 }
 
