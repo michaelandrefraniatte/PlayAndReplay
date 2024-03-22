@@ -89,6 +89,7 @@ namespace PlayAndReplay
                 if (result == DialogResult.OK)
                 {
                     richTextBox1.Clear();
+                    OpenOption(Path.GetDirectoryName(filePath) + "/options/" + Path.GetFileName(filePath) + ".option");
                     string txt = File.ReadAllText(filePath, Encoding.UTF8);
                     richTextBox1.Text = txt;
                     filename = filePath;
@@ -101,6 +102,7 @@ namespace PlayAndReplay
             else
             {
                 richTextBox1.Clear();
+                OpenOption(Path.GetDirectoryName(filePath) + "/options/" + Path.GetFileName(filePath) + ".option");
                 string txt = File.ReadAllText(filePath, Encoding.UTF8);
                 richTextBox1.Text = txt;
                 filename = filePath;
@@ -196,8 +198,33 @@ namespace PlayAndReplay
             {
                 Directory.CreateDirectory("Replays");
             }
-            string RecordFileName = Application.StartupPath + @"\Replays\Replay_" + DateTime.Now.ToString().Replace("/", "_").Replace(":", "_").Replace(" ", "_");
+            if (!Directory.Exists(@"\Replays\options"))
+            {
+                Directory.CreateDirectory(@"\Replays\options");
+            }
+            string name = @"Replay_" + DateTime.Now.ToString().Replace("/", "_").Replace(":", "_").Replace(" ", "_");
+            string RecordFileName = Application.StartupPath + @"\Replays\" + name;
             richTextBox1.SaveFile(RecordFileName, RichTextBoxStreamType.RichText);
+            string optionFileName = Application.StartupPath + @"\Replays\options\" + name + ".option";
+            SaveOption(optionFileName);
+        }
+        private void SaveOption(string completepath)
+        {
+            using (StreamWriter createdfile = new StreamWriter(completepath))
+            {
+                createdfile.WriteLine(enableSticksToolStripMenuItem.Checked);
+                createdfile.WriteLine(emptyToolStripMenuItem.Text);
+                createdfile.Close();
+            }
+        }
+        private void OpenOption(string completepath)
+        {
+            using (StreamReader file = new StreamReader(completepath))
+            {
+                enableSticksToolStripMenuItem.Checked = bool.Parse(file.ReadLine());
+                emptyToolStripMenuItem.Text = file.ReadLine();
+                file.Close();
+            }
         }
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -234,6 +261,7 @@ namespace PlayAndReplay
                     if (op.ShowDialog() == DialogResult.OK)
                     {
                         richTextBox1.Clear();
+                        OpenOption(Path.GetDirectoryName(op.FileName) + "/options/" + Path.GetFileName(op.FileName) + ".option");
                         string txt = File.ReadAllText(op.FileName, Encoding.UTF8);
                         richTextBox1.Text = txt;
                         filename = op.FileName;
@@ -251,6 +279,7 @@ namespace PlayAndReplay
                 if (op.ShowDialog() == DialogResult.OK)
                 {
                     richTextBox1.Clear();
+                    OpenOption(Path.GetDirectoryName(op.FileName) + "/options/" + Path.GetFileName(op.FileName) + ".option");
                     string txt = File.ReadAllText(op.FileName, Encoding.UTF8);
                     richTextBox1.Text = txt;
                     filename = op.FileName;
@@ -269,6 +298,11 @@ namespace PlayAndReplay
             }
             else
             {
+                if (!Directory.Exists(Path.GetDirectoryName(openFilePath) + "/options"))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(openFilePath) + "/options");
+                }
+                SaveOption(Path.GetDirectoryName(openFilePath) + "/options/" + Path.GetFileName(openFilePath) + ".option");
                 File.WriteAllText(openFilePath, richTextBox1.Text, Encoding.UTF8);
                 fileTextSaved = richTextBox1.Text;
                 justSaved = true;
@@ -280,6 +314,11 @@ namespace PlayAndReplay
             sf.Filter = "All Files(*.txt)|*.txt";
             if (sf.ShowDialog() == DialogResult.OK)
             {
+                if (!Directory.Exists(Path.GetDirectoryName(sf.FileName) + "/options"))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(sf.FileName) + "/options");
+                }
+                SaveOption(Path.GetDirectoryName(sf.FileName) + "/options/" + Path.GetFileName(sf.FileName) + ".option");
                 File.WriteAllText(sf.FileName, richTextBox1.Text, Encoding.UTF8);
                 filename = sf.FileName;
                 openFilePath = sf.FileName;
