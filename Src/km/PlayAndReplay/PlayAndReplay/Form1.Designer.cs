@@ -35,6 +35,8 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableMouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,8 +44,8 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableMouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,30 +78,46 @@
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(141, 26);
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enableMouseToolStripMenuItem,
+            this.secondsBeforeRepeatToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.optionToolStripMenuItem.Text = "Option";
+            // 
+            // enableMouseToolStripMenuItem
+            // 
+            this.enableMouseToolStripMenuItem.CheckOnClick = true;
+            this.enableMouseToolStripMenuItem.Name = "enableMouseToolStripMenuItem";
+            this.enableMouseToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.enableMouseToolStripMenuItem.Text = "Enable mouse";
             // 
             // playToolStripMenuItem
             // 
@@ -155,20 +173,19 @@
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
             // 
-            // optionToolStripMenuItem
+            // secondsBeforeRepeatToolStripMenuItem
             // 
-            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enableMouseToolStripMenuItem});
-            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
-            this.optionToolStripMenuItem.Text = "Option";
+            this.secondsBeforeRepeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emptyToolStripMenuItem});
+            this.secondsBeforeRepeatToolStripMenuItem.Name = "secondsBeforeRepeatToolStripMenuItem";
+            this.secondsBeforeRepeatToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.secondsBeforeRepeatToolStripMenuItem.Text = "Seconds before repeat";
             // 
-            // enableMouseToolStripMenuItem
+            // emptyToolStripMenuItem
             // 
-            this.enableMouseToolStripMenuItem.CheckOnClick = true;
-            this.enableMouseToolStripMenuItem.Name = "enableMouseToolStripMenuItem";
-            this.enableMouseToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.enableMouseToolStripMenuItem.Text = "Enable mouse";
+            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
+            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.emptyToolStripMenuItem.Text = "empty";
             // 
             // Form1
             // 
@@ -208,6 +225,8 @@
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enableMouseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem secondsBeforeRepeatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emptyToolStripMenuItem;
     }
 }
 

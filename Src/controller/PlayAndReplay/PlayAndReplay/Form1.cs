@@ -5,20 +5,16 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 using controllers;
 using KeyboardHooksAPI;
 using OpenWithSingleInstance;
 using Valuechanges;
 using XInputsAPI;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace PlayAndReplay
 {
@@ -35,8 +31,7 @@ namespace PlayAndReplay
         private static bool justSaved = true, onopenwith = false;
         private static DialogResult result;
         private static string filename = "";
-        private static bool play, replay;
-        private static bool running;
+        private static bool play, replay, running, enablesticks;
         private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch();
         private static double elapseplay, elapsereplay;
         private static bool Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_lefttrigger, Controller_Send_righttrigger, Controller_Send_xbox;
@@ -117,7 +112,7 @@ namespace PlayAndReplay
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";
+            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Stop: Use keyboard key shortcut LCtrl + U.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";
             const string caption = "About";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -182,8 +177,13 @@ namespace PlayAndReplay
                 {
                     Replay();
                 }
-                valchanged(2, kh.Key_LeftControl & kh.Key_S);
+                valchanged(2, kh.Key_LeftControl & kh.Key_U);
                 if (wd[2] == 1)
+                {
+                    Stop();
+                }
+                valchanged(3, kh.Key_LeftControl & kh.Key_S);
+                if (wd[3] == 1)
                 {
                     Save();
                 }
@@ -316,19 +316,12 @@ namespace PlayAndReplay
         }
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Play();
-        }
-        private void replayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Replay();
-        }
-        private void Play()
-        {
             if (replay)
             {
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
                 Thread.Sleep(100);
+                Init();
                 watchreplay.Stop();
             }
             if (!play)
@@ -336,6 +329,7 @@ namespace PlayAndReplay
                 play = true;
                 playToolStripMenuItem.Text = "Stop";
                 richTextBox1.Clear();
+                enablesticks = enableSticksToolStripMenuItem.Checked;
                 watchplay = new Stopwatch();
                 watchplay.Start();
                 Task.Run(() => taskPlay());
@@ -348,7 +342,7 @@ namespace PlayAndReplay
                 watchplay.Stop();
             }
         }
-        private void Replay()
+        private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (play)
             {
@@ -369,11 +363,63 @@ namespace PlayAndReplay
                 }
                 linecount = 0;
                 Init();
+                enablesticks = enableSticksToolStripMenuItem.Checked;
                 watchreplay = new Stopwatch();
                 watchreplay.Start();
                 Task.Run(() => taskReplay());
             }
             else
+            {
+                replay = false;
+                replayToolStripMenuItem.Text = "Replay";
+                Thread.Sleep(100);
+                Init();
+                watchreplay.Stop();
+            }
+        }
+        private void Play()
+        {
+            if (!play)
+            {
+                play = true;
+                playToolStripMenuItem.Text = "Stop";
+                richTextBox1.Clear();
+                enablesticks = enableSticksToolStripMenuItem.Checked;
+                watchplay = new Stopwatch();
+                watchplay.Start();
+                Task.Run(() => taskPlay());
+            }
+        }
+        private void Replay()
+        {
+            if (!replay)
+            {
+                replay = true;
+                replayToolStripMenuItem.Text = "Stop";
+                richTextBox2.Clear();
+                string[] lines = richTextBox1.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string line in lines)
+                {
+                    richTextBox2.AppendText(line + ";\r\n");
+                }
+                linecount = 0;
+                Init();
+                enablesticks = enableSticksToolStripMenuItem.Checked;
+                watchreplay = new Stopwatch();
+                watchreplay.Start();
+                Task.Run(() => taskReplay());
+            }
+        }
+        private void Stop()
+        {
+            if (play)
+            {
+                play = false;
+                playToolStripMenuItem.Text = "Play";
+                Thread.Sleep(100);
+                watchplay.Stop();
+            }
+            if (replay)
             {
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
@@ -389,18 +435,21 @@ namespace PlayAndReplay
                 if (!play)
                     break;
                 elapseplay = (double)watchplay.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
-                ValueChange[0] = xi.ControllerThumbRightX;
-                if (ValueChange._ValueChange[0] != 0)
-                    richTextBox1.AppendText(elapseplay + "; ControllerThumbRightX; " + xi.ControllerThumbRightX + "; \r\n");
-                ValueChange[1] = xi.ControllerThumbRightY;
-                if (ValueChange._ValueChange[1] != 0)
-                    richTextBox1.AppendText(elapseplay + "; ControllerThumbRightY; " + xi.ControllerThumbRightY + "; \r\n");
-                ValueChange[2] = xi.ControllerThumbLeftX;
-                if (ValueChange._ValueChange[2] != 0)
-                    richTextBox1.AppendText(elapseplay + "; ControllerThumbLeftX; " + xi.ControllerThumbLeftX + "; \r\n");
-                ValueChange[3] = xi.ControllerThumbLeftY;
-                if (ValueChange._ValueChange[3] != 0)
-                    richTextBox1.AppendText(elapseplay + "; ControllerThumbLeftY; " + xi.ControllerThumbLeftY + "; \r\n");
+                if (enablesticks)
+                {
+                    ValueChange[0] = xi.ControllerThumbRightX;
+                    if (ValueChange._ValueChange[0] != 0)
+                        richTextBox1.AppendText(elapseplay + "; ControllerThumbRightX; " + xi.ControllerThumbRightX + "; \r\n");
+                    ValueChange[1] = xi.ControllerThumbRightY;
+                    if (ValueChange._ValueChange[1] != 0)
+                        richTextBox1.AppendText(elapseplay + "; ControllerThumbRightY; " + xi.ControllerThumbRightY + "; \r\n");
+                    ValueChange[2] = xi.ControllerThumbLeftX;
+                    if (ValueChange._ValueChange[2] != 0)
+                        richTextBox1.AppendText(elapseplay + "; ControllerThumbLeftX; " + xi.ControllerThumbLeftX + "; \r\n");
+                    ValueChange[3] = xi.ControllerThumbLeftY;
+                    if (ValueChange._ValueChange[3] != 0)
+                        richTextBox1.AppendText(elapseplay + "; ControllerThumbLeftY; " + xi.ControllerThumbLeftY + "; \r\n");
+                }
                 ValueChange[4] = xi.ControllerTriggerLeftPosition;
                 if (ValueChange._ValueChange[4] != 0)
                     richTextBox1.AppendText(elapseplay + "; ControllerTriggerLeftPosition; " + xi.ControllerTriggerLeftPosition + "; \r\n");
@@ -461,29 +510,32 @@ namespace PlayAndReplay
                 if (linecount < richTextBox2.Lines.Length)
                 {
                     elapsereplay = (double)watchreplay.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
-                    var line = richTextBox2.Lines[linecount];
-                    var data = line.Split(';');
+                    string line = richTextBox2.Lines[linecount];
+                    string[] data = line.Split(';');
                     double time = Convert.ToSingle(data[0]);
                     if (elapsereplay >= time)
                     {
                         richTextBox2.Select(richTextBox2.GetFirstCharIndexFromLine(linecount), richTextBox2.Lines[linecount].Length);
                         richTextBox2.SelectionColor = Color.Red;
                         linecount++;
-                        if (data[1] == " ControllerThumbRightX")
+                        if (enablesticks)
                         {
-                            Controller_Send_rightstickx = Convert.ToSingle(data[2]);
-                        }
-                        if (data[1] == " ControllerThumbRightY")
-                        {
-                            Controller_Send_rightsticky = Convert.ToSingle(data[2]);
-                        }
-                        if (data[1] == " ControllerThumbLeftX")
-                        {
-                            Controller_Send_leftstickx = Convert.ToSingle(data[2]);
-                        }
-                        if (data[1] == " ControllerThumbLeftY")
-                        {
-                            Controller_Send_leftsticky = Convert.ToSingle(data[2]);
+                            if (data[1] == " ControllerThumbRightX")
+                            {
+                                Controller_Send_rightstickx = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " ControllerThumbRightY")
+                            {
+                                Controller_Send_rightsticky = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " ControllerThumbLeftX")
+                            {
+                                Controller_Send_leftstickx = Convert.ToSingle(data[2]);
+                            }
+                            if (data[1] == " ControllerThumbLeftY")
+                            {
+                                Controller_Send_leftsticky = Convert.ToSingle(data[2]);
+                            }
                         }
                         if (data[1] == " ControllerTriggerLeftPosition")
                         {
@@ -550,8 +602,20 @@ namespace PlayAndReplay
                             Controller_Send_start = bool.Parse(data[2]);
                         }
                     }
+                    XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
                 }
-                XBC.Set(Controller_Send_back, Controller_Send_start, Controller_Send_A, Controller_Send_B, Controller_Send_X, Controller_Send_Y, Controller_Send_up, Controller_Send_left, Controller_Send_down, Controller_Send_right, Controller_Send_leftstick, Controller_Send_rightstick, Controller_Send_leftbumper, Controller_Send_rightbumper, Controller_Send_leftstickx, Controller_Send_leftsticky, Controller_Send_rightstickx, Controller_Send_rightsticky, Controller_Send_lefttriggerposition, Controller_Send_righttriggerposition, Controller_Send_xbox);
+                else
+                {
+                    if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        linecount = 0;
+                        Thread.Sleep(Convert.ToInt32(emptyToolStripMenuItem.Text));
+                    }
+                }
                 Thread.Sleep(1);
             }
         }

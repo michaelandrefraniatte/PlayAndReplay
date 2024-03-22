@@ -108,7 +108,7 @@ namespace PlayAndReplay
         }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";
+            const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Stop: Use keyboard key shortcut LCtrl + U.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";
             const string caption = "About";
             MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -173,8 +173,13 @@ namespace PlayAndReplay
                 {
                     Replay();
                 }
-                valchanged(2, kh.Key_LeftControl & kh.Key_S);
+                valchanged(2, kh.Key_LeftControl & kh.Key_U);
                 if (wd[2] == 1)
+                {
+                    Stop();
+                }
+                valchanged(3, kh.Key_LeftControl & kh.Key_S);
+                if (wd[3] == 1)
                 {
                     Save();
                 }
@@ -307,19 +312,12 @@ namespace PlayAndReplay
         }
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Play();
-        }
-        private void replayToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Replay();
-        }
-        private void Play()
-        {
             if (replay)
             {
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
                 Thread.Sleep(100);
+                Init();
                 watchreplay.Stop();
             }
             if (!play)
@@ -327,7 +325,7 @@ namespace PlayAndReplay
                 play = true;
                 playToolStripMenuItem.Text = "Stop";
                 richTextBox1.Clear();
-                enablemouse = optionToolStripMenuItem.Checked;
+                enablemouse = enableMouseToolStripMenuItem.Checked;
                 watchplay = new Stopwatch();
                 watchplay.Start();
                 Task.Run(() => taskPlay());
@@ -340,7 +338,7 @@ namespace PlayAndReplay
                 watchplay.Stop();
             }
         }
-        private void Replay()
+        private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (play)
             {
@@ -361,12 +359,63 @@ namespace PlayAndReplay
                 }
                 linecount = 0;
                 Init();
-                enablemouse = optionToolStripMenuItem.Checked;
+                enablemouse = enableMouseToolStripMenuItem.Checked;
                 watchreplay = new Stopwatch();
                 watchreplay.Start();
                 Task.Run(() => taskReplay());
             }
             else
+            {
+                replay = false;
+                replayToolStripMenuItem.Text = "Replay";
+                Thread.Sleep(100);
+                Init();
+                watchreplay.Stop();
+            }
+        }
+        private void Play()
+        {
+            if (!play)
+            {
+                play = true;
+                playToolStripMenuItem.Text = "Stop";
+                richTextBox1.Clear();
+                enablemouse = enableMouseToolStripMenuItem.Checked;
+                watchplay = new Stopwatch();
+                watchplay.Start();
+                Task.Run(() => taskPlay());
+            }
+        }
+        private void Replay()
+        {
+            if (!replay)
+            {
+                replay = true;
+                replayToolStripMenuItem.Text = "Stop";
+                richTextBox2.Clear();
+                string[] lines = richTextBox1.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string line in lines)
+                {
+                    richTextBox2.AppendText(line + ";\r\n");
+                }
+                linecount = 0;
+                Init();
+                enablemouse = enableMouseToolStripMenuItem.Checked;
+                watchreplay = new Stopwatch();
+                watchreplay.Start();
+                Task.Run(() => taskReplay());
+            }
+        }
+        private void Stop()
+        {
+            if (play)
+            {
+                play = false;
+                playToolStripMenuItem.Text = "Play";
+                Thread.Sleep(100);
+                watchplay.Stop();
+            }
+            if (replay)
             {
                 replay = false;
                 replayToolStripMenuItem.Text = "Replay";
@@ -823,8 +872,8 @@ namespace PlayAndReplay
                 if (linecount < richTextBox2.Lines.Length)
                 {
                     elapsereplay = (double)watchreplay.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
-                    var line = richTextBox2.Lines[linecount];
-                    var data = line.Split(';');
+                    string line = richTextBox2.Lines[linecount];
+                    string[] data = line.Split(';');
                     double time = Convert.ToSingle(data[0]);
                     if (elapsereplay >= time)
                     {
@@ -1396,8 +1445,20 @@ namespace PlayAndReplay
                             }
                         }
                     }
+                    sendinput.Set(KeyboardMouseDriverType, MouseMoveX, MouseMoveY, MouseAbsX, MouseAbsY, MouseDesktopX, MouseDesktopY, SendLeftClick, SendRightClick, SendMiddleClick, SendWheelUp, SendWheelDown, SendLeft, SendRight, SendUp, SendDown, SendLButton, SendRButton, SendCancel, SendMBUTTON, SendXBUTTON1, SendXBUTTON2, SendBack, SendTab, SendClear, SendReturn, SendSHIFT, SendCONTROL, SendMENU, SendPAUSE, SendCAPITAL, SendKANA, SendHANGEUL, SendHANGUL, SendJUNJA, SendFINAL, SendHANJA, SendKANJI, SendEscape, SendCONVERT, SendNONCONVERT, SendACCEPT, SendMODECHANGE, SendSpace, SendPRIOR, SendNEXT, SendEND, SendHOME, SendLEFT, SendUP, SendRIGHT, SendDOWN, SendSELECT, SendPRINT, SendEXECUTE, SendSNAPSHOT, SendINSERT, SendDELETE, SendHELP, SendAPOSTROPHE, Send0, Send1, Send2, Send3, Send4, Send5, Send6, Send7, Send8, Send9, SendA, SendB, SendC, SendD, SendE, SendF, SendG, SendH, SendI, SendJ, SendK, SendL, SendM, SendN, SendO, SendP, SendQ, SendR, SendS, SendT, SendU, SendV, SendW, SendX, SendY, SendZ, SendLWIN, SendRWIN, SendAPPS, SendSLEEP, SendNUMPAD0, SendNUMPAD1, SendNUMPAD2, SendNUMPAD3, SendNUMPAD4, SendNUMPAD5, SendNUMPAD6, SendNUMPAD7, SendNUMPAD8, SendNUMPAD9, SendMULTIPLY, SendADD, SendSEPARATOR, SendSUBTRACT, SendDECIMAL, SendDIVIDE, SendF1, SendF2, SendF3, SendF4, SendF5, SendF6, SendF7, SendF8, SendF9, SendF10, SendF11, SendF12, SendF13, SendF14, SendF15, SendF16, SendF17, SendF18, SendF19, SendF20, SendF21, SendF22, SendF23, SendF24, SendNUMLOCK, SendSCROLL, SendLeftShift, SendRightShift, SendLeftControl, SendRightControl, SendLMENU, SendRMENU);
                 }
-                sendinput.Set(KeyboardMouseDriverType, MouseMoveX, MouseMoveY, MouseAbsX, MouseAbsY, MouseDesktopX, MouseDesktopY, SendLeftClick, SendRightClick, SendMiddleClick, SendWheelUp, SendWheelDown, SendLeft, SendRight, SendUp, SendDown, SendLButton, SendRButton, SendCancel, SendMBUTTON, SendXBUTTON1, SendXBUTTON2, SendBack, SendTab, SendClear, SendReturn, SendSHIFT, SendCONTROL, SendMENU, SendPAUSE, SendCAPITAL, SendKANA, SendHANGEUL, SendHANGUL, SendJUNJA, SendFINAL, SendHANJA, SendKANJI, SendEscape, SendCONVERT, SendNONCONVERT, SendACCEPT, SendMODECHANGE, SendSpace, SendPRIOR, SendNEXT, SendEND, SendHOME, SendLEFT, SendUP, SendRIGHT, SendDOWN, SendSELECT, SendPRINT, SendEXECUTE, SendSNAPSHOT, SendINSERT, SendDELETE, SendHELP, SendAPOSTROPHE, Send0, Send1, Send2, Send3, Send4, Send5, Send6, Send7, Send8, Send9, SendA, SendB, SendC, SendD, SendE, SendF, SendG, SendH, SendI, SendJ, SendK, SendL, SendM, SendN, SendO, SendP, SendQ, SendR, SendS, SendT, SendU, SendV, SendW, SendX, SendY, SendZ, SendLWIN, SendRWIN, SendAPPS, SendSLEEP, SendNUMPAD0, SendNUMPAD1, SendNUMPAD2, SendNUMPAD3, SendNUMPAD4, SendNUMPAD5, SendNUMPAD6, SendNUMPAD7, SendNUMPAD8, SendNUMPAD9, SendMULTIPLY, SendADD, SendSEPARATOR, SendSUBTRACT, SendDECIMAL, SendDIVIDE, SendF1, SendF2, SendF3, SendF4, SendF5, SendF6, SendF7, SendF8, SendF9, SendF10, SendF11, SendF12, SendF13, SendF14, SendF15, SendF16, SendF17, SendF18, SendF19, SendF20, SendF21, SendF22, SendF23, SendF24, SendNUMLOCK, SendSCROLL, SendLeftShift, SendRightShift, SendLeftControl, SendRightControl, SendLMENU, SendRMENU);
+                else
+                {
+                    if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        linecount = 0;
+                        Thread.Sleep(Convert.ToInt32(emptyToolStripMenuItem.Text));
+                    }
+                }
                 Thread.Sleep(1);
             }
         }
