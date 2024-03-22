@@ -1488,6 +1488,7 @@ namespace PlayAndReplay
                 }
                 else
                 {
+                    Init();
                     if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
                     {
                         break;
@@ -1495,7 +1496,10 @@ namespace PlayAndReplay
                     else
                     {
                         linecount = 0;
-                        Thread.Sleep(Convert.ToInt32(emptyToolStripMenuItem.Text));
+                        watchreplay.Stop();
+                        Thread.Sleep((int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000));
+                        watchreplay = new Stopwatch();
+                        watchreplay.Start();
                     }
                 }
                 Thread.Sleep(1);
