@@ -417,6 +417,14 @@ namespace PlayAndReplay
         }
         private void Play()
         {
+            if (replay)
+            {
+                replay = false;
+                replayToolStripMenuItem.Text = "Replay";
+                Thread.Sleep(100);
+                Init();
+                watchreplay.Stop();
+            }
             if (!play)
             {
                 play = true;
@@ -430,6 +438,13 @@ namespace PlayAndReplay
         }
         private void Replay()
         {
+            if (play)
+            {
+                play = false;
+                playToolStripMenuItem.Text = "Play";
+                Thread.Sleep(100);
+                watchplay.Stop();
+            }
             if (!replay)
             {
                 replay = true;
