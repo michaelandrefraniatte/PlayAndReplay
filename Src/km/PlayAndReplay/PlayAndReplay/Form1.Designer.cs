@@ -39,6 +39,8 @@
             this.enableMouseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kMDriverTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendinputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,8 +48,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.kMDriverTypeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sendinputToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -136,6 +136,20 @@
             this.emptyToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
             this.emptyToolStripMenuItem.Text = "empty";
             // 
+            // kMDriverTypeToolStripMenuItem
+            // 
+            this.kMDriverTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendinputToolStripMenuItem});
+            this.kMDriverTypeToolStripMenuItem.Name = "kMDriverTypeToolStripMenuItem";
+            this.kMDriverTypeToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.kMDriverTypeToolStripMenuItem.Text = "KM driver type";
+            // 
+            // sendinputToolStripMenuItem
+            // 
+            this.sendinputToolStripMenuItem.Name = "sendinputToolStripMenuItem";
+            this.sendinputToolStripMenuItem.Size = new System.Drawing.Size(157, 26);
+            this.sendinputToolStripMenuItem.Text = "sendinput";
+            // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
@@ -181,6 +195,7 @@
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // richTextBox2
             // 
@@ -189,20 +204,7 @@
             this.richTextBox2.Size = new System.Drawing.Size(384, 518);
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
-            // 
-            // kMDriverTypeToolStripMenuItem
-            // 
-            this.kMDriverTypeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sendinputToolStripMenuItem});
-            this.kMDriverTypeToolStripMenuItem.Name = "kMDriverTypeToolStripMenuItem";
-            this.kMDriverTypeToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.kMDriverTypeToolStripMenuItem.Text = "KM driver type";
-            // 
-            // sendinputToolStripMenuItem
-            // 
-            this.sendinputToolStripMenuItem.Name = "sendinputToolStripMenuItem";
-            this.sendinputToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.sendinputToolStripMenuItem.Text = "sendinput";
+            this.richTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox2_KeyDown);
             // 
             // Form1
             // 
@@ -218,6 +220,7 @@
             this.Text = "PlayAndReplay";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

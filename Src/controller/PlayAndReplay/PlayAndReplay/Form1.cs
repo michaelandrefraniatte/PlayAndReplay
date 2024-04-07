@@ -112,6 +112,31 @@ namespace PlayAndReplay
                 justSaved = true;
             }
         }
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            OnKeyDown(e.KeyData);
+        }
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            OnKeyDown(e.KeyData);
+        }
+        private void richTextBox2_KeyDown(object sender, KeyEventArgs e)
+        {
+            OnKeyDown(e.KeyData);
+        }
+        private void OnKeyDown(Keys keyData)
+        {
+            if (keyData == Keys.F1)
+            {
+                const string message = "• Author: Michaël André Franiatte.\n\r\n\r• Contact: michael.franiatte@gmail.com.\n\r\n\r• Publisher: https://github.com/michaelandrefraniatte.\n\r\n\r• Copyrights: All rights reserved, no permissions granted.\n\r\n\r• License: Not open source, not free of charge to use.";
+                const string caption = "About";
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (keyData == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             const string message = "• Play: Use keyboard key shortcut LCtrl + P.\n\r\n\r• Replay: Use keyboard key shortcut LCtrl + R.\n\r\n\r• Stop: Use keyboard key shortcut LCtrl + U.\n\r\n\r• Save: Use keyboard key shortcut LCtrl + S.";

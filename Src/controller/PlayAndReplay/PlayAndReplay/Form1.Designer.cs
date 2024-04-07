@@ -35,6 +35,10 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enableSticksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.playToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.replayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,10 +46,6 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enableSticksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.secondsBeforeRepeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.emptyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +103,36 @@
             this.saveAsToolStripMenuItem.Text = "Save as";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enableSticksToolStripMenuItem,
+            this.secondsBeforeRepeatToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
+            this.optionToolStripMenuItem.Text = "Option";
+            // 
+            // enableSticksToolStripMenuItem
+            // 
+            this.enableSticksToolStripMenuItem.CheckOnClick = true;
+            this.enableSticksToolStripMenuItem.Name = "enableSticksToolStripMenuItem";
+            this.enableSticksToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.enableSticksToolStripMenuItem.Text = "Enable sticks";
+            // 
+            // secondsBeforeRepeatToolStripMenuItem
+            // 
+            this.secondsBeforeRepeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.emptyToolStripMenuItem});
+            this.secondsBeforeRepeatToolStripMenuItem.Name = "secondsBeforeRepeatToolStripMenuItem";
+            this.secondsBeforeRepeatToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
+            this.secondsBeforeRepeatToolStripMenuItem.Text = "Seconds before repeat";
+            // 
+            // emptyToolStripMenuItem
+            // 
+            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
+            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(134, 26);
+            this.emptyToolStripMenuItem.Text = "empty";
+            // 
             // playToolStripMenuItem
             // 
             this.playToolStripMenuItem.Name = "playToolStripMenuItem";
@@ -148,6 +178,7 @@
             this.richTextBox1.TabIndex = 1;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            this.richTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox1_KeyDown);
             // 
             // richTextBox2
             // 
@@ -156,36 +187,7 @@
             this.richTextBox2.Size = new System.Drawing.Size(384, 518);
             this.richTextBox2.TabIndex = 2;
             this.richTextBox2.Text = "";
-            // 
-            // optionToolStripMenuItem
-            // 
-            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enableSticksToolStripMenuItem,
-            this.secondsBeforeRepeatToolStripMenuItem});
-            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
-            this.optionToolStripMenuItem.Text = "Option";
-            // 
-            // enableSticksToolStripMenuItem
-            // 
-            this.enableSticksToolStripMenuItem.CheckOnClick = true;
-            this.enableSticksToolStripMenuItem.Name = "enableSticksToolStripMenuItem";
-            this.enableSticksToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.enableSticksToolStripMenuItem.Text = "Enable sticks";
-            // 
-            // secondsBeforeRepeatToolStripMenuItem
-            // 
-            this.secondsBeforeRepeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.emptyToolStripMenuItem});
-            this.secondsBeforeRepeatToolStripMenuItem.Name = "secondsBeforeRepeatToolStripMenuItem";
-            this.secondsBeforeRepeatToolStripMenuItem.Size = new System.Drawing.Size(242, 26);
-            this.secondsBeforeRepeatToolStripMenuItem.Text = "Seconds before repeat";
-            // 
-            // emptyToolStripMenuItem
-            // 
-            this.emptyToolStripMenuItem.Name = "emptyToolStripMenuItem";
-            this.emptyToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.emptyToolStripMenuItem.Text = "empty";
+            this.richTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox2_KeyDown);
             // 
             // Form1
             // 
@@ -201,6 +203,7 @@
             this.Text = "PlayAndReplay";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
