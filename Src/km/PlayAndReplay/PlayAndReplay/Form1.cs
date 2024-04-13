@@ -17,6 +17,8 @@ namespace PlayAndReplay
 {
     public partial class Form1 : Form
     {
+        [DllImport("user32.dll")]
+        public static extern bool EnumDisplaySettings(string lpszDeviceName, int iModeNum, ref DEVMODE lpDevMode);
         [DllImport("winmm.dll", EntryPoint = "timeBeginPeriod")]
         public static extern uint TimeBeginPeriod(uint ms);
         [DllImport("winmm.dll", EntryPoint = "timeEndPeriod")]
@@ -37,6 +39,7 @@ namespace PlayAndReplay
         private MouseHooks mh = new MouseHooks();
         public static Sendinput sendinput = new Sendinput();
         public static Valuechange ValueChange = new Valuechange();
+        private static double ratio;
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -172,6 +175,15 @@ namespace PlayAndReplay
             catch { }
             TimeBeginPeriod(1);
             NtSetTimerResolution(1, true, ref CurrentResolution);
+            Screen[] screenList = Screen.AllScreens;
+            foreach (Screen screen in screenList)
+            {
+                DEVMODE dm = new DEVMODE();
+                dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
+                EnumDisplaySettings(screen.DeviceName, -1, ref dm);
+                ratio = Convert.ToSingle(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width));
+                break;
+            }
             Task.Run(() => Start());
         }
         private void Start()
@@ -378,67 +390,17 @@ namespace PlayAndReplay
         }
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (replay)
-            {
-                replay = false;
-                replayToolStripMenuItem.Text = "Replay";
-                Thread.Sleep(100);
-                Init();
-                watchreplay.Stop();
-            }
             if (!play)
-            {
-                play = true;
-                playToolStripMenuItem.Text = "Stop";
-                richTextBox1.Clear();
-                enablemouse = enableMouseToolStripMenuItem.Checked;
-                watchplay = new Stopwatch();
-                watchplay.Start();
-                Task.Run(() => taskPlay());
-            }
+                Play();
             else
-            {
-                play = false;
-                playToolStripMenuItem.Text = "Play";
-                Thread.Sleep(100);
-                watchplay.Stop();
-            }
+                Stop();
         }
         private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (play)
-            {
-                play = false;
-                playToolStripMenuItem.Text = "Play";
-                Thread.Sleep(100);
-                watchplay.Stop();
-            }
             if (!replay)
-            {
-                replay = true;
-                replayToolStripMenuItem.Text = "Stop";
-                richTextBox2.Clear();
-                string[] lines = richTextBox1.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string line in lines)
-                {
-                    richTextBox2.AppendText(line + ";\r\n");
-                }
-                linecount = 0;
-                Init();
-                KeyboardMouseDriverType = sendinputToolStripMenuItem.Text;
-                enablemouse = enableMouseToolStripMenuItem.Checked;
-                watchreplay = new Stopwatch();
-                watchreplay.Start();
-                Task.Run(() => taskReplay());
-            }
+                Replay();
             else
-            {
-                replay = false;
-                replayToolStripMenuItem.Text = "Replay";
-                Thread.Sleep(100);
-                Init();
-                watchreplay.Stop();
-            }
+                Stop();
         }
         private void Play()
         {
@@ -1503,11 +1465,11 @@ namespace PlayAndReplay
                             }
                             if (data[1] == " MouseX")
                             {
-                                MouseDesktopX = Convert.ToSingle(data[2]);
+                                MouseDesktopX = Convert.ToSingle(data[2]) / ratio;
                             }
                             if (data[1] == " MouseY")
                             {
-                                MouseDesktopY = Convert.ToSingle(data[2]);
+                                MouseDesktopY = Convert.ToSingle(data[2]) / ratio;
                             }
                             if (data[1] == " MouseZ")
                             {
@@ -1532,14 +1494,19 @@ namespace PlayAndReplay
                 }
                 else
                 {
-                    Init();
                     if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
                     {
+                        replay = false;
+                        replayToolStripMenuItem.Text = "Replay";
+                        Thread.Sleep(100);
+                        Init();
+                        watchreplay.Stop();
                         break;
                     }
                     else
                     {
                         linecount = 0;
+                        Init();
                         watchreplay.Stop();
                         watchrepeat = new Stopwatch();
                         watchrepeat.Start();
@@ -1710,5 +1677,43 @@ namespace PlayAndReplay
             SendRMENU = false; 
             sendinput.Set(KeyboardMouseDriverType, MouseMoveX, MouseMoveY, MouseAbsX, MouseAbsY, MouseDesktopX, MouseDesktopY, SendLeftClick, SendRightClick, SendMiddleClick, SendWheelUp, SendWheelDown, SendLeft, SendRight, SendUp, SendDown, SendLButton, SendRButton, SendCancel, SendMBUTTON, SendXBUTTON1, SendXBUTTON2, SendBack, SendTab, SendClear, SendReturn, SendSHIFT, SendCONTROL, SendMENU, SendPAUSE, SendCAPITAL, SendKANA, SendHANGEUL, SendHANGUL, SendJUNJA, SendFINAL, SendHANJA, SendKANJI, SendEscape, SendCONVERT, SendNONCONVERT, SendACCEPT, SendMODECHANGE, SendSpace, SendPRIOR, SendNEXT, SendEND, SendHOME, SendLEFT, SendUP, SendRIGHT, SendDOWN, SendSELECT, SendPRINT, SendEXECUTE, SendSNAPSHOT, SendINSERT, SendDELETE, SendHELP, SendAPOSTROPHE, Send0, Send1, Send2, Send3, Send4, Send5, Send6, Send7, Send8, Send9, SendA, SendB, SendC, SendD, SendE, SendF, SendG, SendH, SendI, SendJ, SendK, SendL, SendM, SendN, SendO, SendP, SendQ, SendR, SendS, SendT, SendU, SendV, SendW, SendX, SendY, SendZ, SendLWIN, SendRWIN, SendAPPS, SendSLEEP, SendNUMPAD0, SendNUMPAD1, SendNUMPAD2, SendNUMPAD3, SendNUMPAD4, SendNUMPAD5, SendNUMPAD6, SendNUMPAD7, SendNUMPAD8, SendNUMPAD9, SendMULTIPLY, SendADD, SendSEPARATOR, SendSUBTRACT, SendDECIMAL, SendDIVIDE, SendF1, SendF2, SendF3, SendF4, SendF5, SendF6, SendF7, SendF8, SendF9, SendF10, SendF11, SendF12, SendF13, SendF14, SendF15, SendF16, SendF17, SendF18, SendF19, SendF20, SendF21, SendF22, SendF23, SendF24, SendNUMLOCK, SendSCROLL, SendLeftShift, SendRightShift, SendLeftControl, SendRightControl, SendLMENU, SendRMENU);
         }
+    }
+    [StructLayout(LayoutKind.Sequential)]
+    public struct DEVMODE
+    {
+        private const int CCHDEVICENAME = 0x20;
+        private const int CCHFORMNAME = 0x20;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x20)]
+        public string dmDeviceName;
+        public short dmSpecVersion;
+        public short dmDriverVersion;
+        public short dmSize;
+        public short dmDriverExtra;
+        public int dmFields;
+        public int dmPositionX;
+        public int dmPositionY;
+        public ScreenOrientation dmDisplayOrientation;
+        public int dmDisplayFixedOutput;
+        public short dmColor;
+        public short dmDuplex;
+        public short dmYResolution;
+        public short dmTTOption;
+        public short dmCollate;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 0x20)]
+        public string dmFormName;
+        public short dmLogPixels;
+        public int dmBitsPerPel;
+        public int dmPelsWidth;
+        public int dmPelsHeight;
+        public int dmDisplayFlags;
+        public int dmDisplayFrequency;
+        public int dmICMMethod;
+        public int dmICMIntent;
+        public int dmMediaType;
+        public int dmDitherType;
+        public int dmReserved1;
+        public int dmReserved2;
+        public int dmPanningWidth;
+        public int dmPanningHeight;
     }
 }

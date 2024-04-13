@@ -26,7 +26,6 @@ C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Mousehook.dll
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\sendinputs.dll
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Valuechanges.dll
-C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Microsoft.Xna.Framework.dll
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Keyboardhook.pdb
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Mousehook.pdb
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\sendinputs.pdb
@@ -39,3 +38,4 @@ C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\obj\x86\Release\PlayAndR.3D8931BB.Up2Date
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\obj\x86\Release\PlayAndReplay.exe
 C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\obj\x86\Release\PlayAndReplay.pdb
+C:\Users\micha\Documents\github\PlayAndReplay\Src\km\PlayAndReplay\PlayAndReplay\bin\x86\Release\Microsoft.Xna.Framework.dll

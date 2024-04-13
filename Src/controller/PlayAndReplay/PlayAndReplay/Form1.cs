@@ -380,66 +380,17 @@ namespace PlayAndReplay
         }
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (replay)
-            {
-                replay = false;
-                replayToolStripMenuItem.Text = "Replay";
-                Thread.Sleep(100);
-                Init();
-                watchreplay.Stop();
-            }
             if (!play)
-            {
-                play = true;
-                playToolStripMenuItem.Text = "Stop";
-                richTextBox1.Clear();
-                enablesticks = enableSticksToolStripMenuItem.Checked;
-                watchplay = new Stopwatch();
-                watchplay.Start();
-                Task.Run(() => taskPlay());
-            }
+                Play();
             else
-            {
-                play = false;
-                playToolStripMenuItem.Text = "Play";
-                Thread.Sleep(100);
-                watchplay.Stop();
-            }
+                Stop();
         }
         private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (play)
-            {
-                play = false;
-                playToolStripMenuItem.Text = "Play";
-                Thread.Sleep(100);
-                watchplay.Stop();
-            }
             if (!replay)
-            {
-                replay = true;
-                replayToolStripMenuItem.Text = "Stop";
-                richTextBox2.Clear();
-                string[] lines = richTextBox1.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-                foreach (string line in lines)
-                {
-                    richTextBox2.AppendText(line + ";\r\n");
-                }
-                linecount = 0;
-                Init();
-                enablesticks = enableSticksToolStripMenuItem.Checked;
-                watchreplay = new Stopwatch();
-                watchreplay.Start();
-                Task.Run(() => taskReplay());
-            }
+                Replay();
             else
-            {
-                replay = false;
-                replayToolStripMenuItem.Text = "Replay";
-                Thread.Sleep(100);
-                Init();
-                watchreplay.Stop();
-            }
+                Stop();
         }
         private void Play()
         {
@@ -685,14 +636,19 @@ namespace PlayAndReplay
                 }
                 else
                 {
-                    Init();
                     if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
                     {
+                        replay = false;
+                        replayToolStripMenuItem.Text = "Replay";
+                        Thread.Sleep(100);
+                        Init();
+                        watchreplay.Stop();
                         break;
                     }
                     else
                     {
                         linecount = 0;
+                        Init();
                         watchreplay.Stop();
                         watchrepeat = new Stopwatch();
                         watchrepeat.Start();
