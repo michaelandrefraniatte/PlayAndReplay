@@ -39,7 +39,7 @@ namespace PlayAndReplay
         private MouseHooks mh = new MouseHooks();
         public static Sendinput sendinput = new Sendinput();
         public static Valuechange ValueChange = new Valuechange();
-        private static double ratio;
+        private static double ratiox, ratioy;
         private static int[] wd = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         private static int[] wu = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 };
         public static void valchanged(int n, bool val)
@@ -181,7 +181,8 @@ namespace PlayAndReplay
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                ratio = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                ratiox = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
+                ratioy = (double)dm.dmPelsHeight / (double)screen.Bounds.Height;
                 break;
             }
             Task.Run(() => Start());
@@ -1465,11 +1466,11 @@ namespace PlayAndReplay
                             }
                             if (data[1] == " MouseX")
                             {
-                                MouseDesktopX = Convert.ToSingle(data[2]) / ratio;
+                                MouseDesktopX = Convert.ToSingle(data[2]) / ratiox;
                             }
                             if (data[1] == " MouseY")
                             {
-                                MouseDesktopY = Convert.ToSingle(data[2]) / ratio;
+                                MouseDesktopY = Convert.ToSingle(data[2]) / ratioy;
                             }
                             if (data[1] == " MouseZ")
                             {
