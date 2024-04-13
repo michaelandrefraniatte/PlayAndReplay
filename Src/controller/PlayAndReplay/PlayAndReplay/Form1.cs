@@ -637,14 +637,7 @@ namespace PlayAndReplay
                 else
                 {
                     if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
-                    {
-                        replay = false;
-                        replayToolStripMenuItem.Text = "Replay";
-                        Thread.Sleep(100);
-                        Init();
-                        watchreplay.Stop();
-                        break;
-                    }
+                        Stop();
                     else
                     {
                         linecount = 0;
@@ -656,7 +649,7 @@ namespace PlayAndReplay
                         while (elapserepeat < (int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000))
                         {
                             if (!replay)
-                                break;
+                                return;
                             elapserepeat = (double)watchrepeat.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
                             Thread.Sleep(100);
                         }

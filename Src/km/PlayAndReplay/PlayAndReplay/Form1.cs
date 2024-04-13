@@ -181,7 +181,7 @@ namespace PlayAndReplay
                 DEVMODE dm = new DEVMODE();
                 dm.dmSize = (short)Marshal.SizeOf(typeof(DEVMODE));
                 EnumDisplaySettings(screen.DeviceName, -1, ref dm);
-                ratio = Convert.ToSingle(Decimal.Divide(dm.dmPelsWidth, screen.Bounds.Width));
+                ratio = (double)dm.dmPelsWidth / (double)screen.Bounds.Width;
                 break;
             }
             Task.Run(() => Start());
@@ -1495,14 +1495,7 @@ namespace PlayAndReplay
                 else
                 {
                     if (emptyToolStripMenuItem.Text == "empty" | emptyToolStripMenuItem.Text == "")
-                    {
-                        replay = false;
-                        replayToolStripMenuItem.Text = "Replay";
-                        Thread.Sleep(100);
-                        Init();
-                        watchreplay.Stop();
-                        break;
-                    }
+                        Stop();
                     else
                     {
                         linecount = 0;
@@ -1514,7 +1507,7 @@ namespace PlayAndReplay
                         while (elapserepeat < (int)(Convert.ToSingle(emptyToolStripMenuItem.Text) * 1000))
                         {
                             if (!replay)
-                                break;
+                                return;
                             elapserepeat = (double)watchrepeat.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
                             Thread.Sleep(100);
                         }
