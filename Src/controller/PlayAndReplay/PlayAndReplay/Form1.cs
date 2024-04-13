@@ -30,7 +30,7 @@ namespace PlayAndReplay
         private static string openFilePath = "", fileTextSaved = "";
         private static bool justSaved = true, onopenwith = false;
         private static DialogResult result;
-        private static string filename = "";
+        private static string filename = "", linereplay;
         private static bool play, replay, running, enablesticks;
         private static Stopwatch watchplay = new Stopwatch(), watchreplay = new Stopwatch(), watchrepeat = new Stopwatch();
         private static double elapseplay, elapsereplay, elapserepeat;
@@ -380,32 +380,21 @@ namespace PlayAndReplay
         }
         private void playToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!play)
-                Play();
-            else
-                Stop();
+            Play();
         }
         private void replayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!replay)
-                Replay();
-            else
-                Stop();
+            Replay();
+        }
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Stop();
         }
         private void Play()
         {
-            if (replay)
-            {
-                replay = false;
-                replayToolStripMenuItem.Text = "Replay";
-                Thread.Sleep(100);
-                Init();
-                watchreplay.Stop();
-            }
             if (!play)
             {
                 play = true;
-                playToolStripMenuItem.Text = "Stop";
                 richTextBox1.Clear();
                 enablesticks = enableSticksToolStripMenuItem.Checked;
                 watchplay = new Stopwatch();
@@ -415,17 +404,9 @@ namespace PlayAndReplay
         }
         private void Replay()
         {
-            if (play)
-            {
-                play = false;
-                playToolStripMenuItem.Text = "Play";
-                Thread.Sleep(100);
-                watchplay.Stop();
-            }
             if (!replay)
             {
                 replay = true;
-                replayToolStripMenuItem.Text = "Stop";
                 richTextBox2.Clear();
                 string[] lines = richTextBox1.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string line in lines)
@@ -433,6 +414,7 @@ namespace PlayAndReplay
                     richTextBox2.AppendText(line + ";\r\n");
                 }
                 linecount = 0;
+                linereplay = "";
                 Init();
                 enablesticks = enableSticksToolStripMenuItem.Checked;
                 watchreplay = new Stopwatch();
@@ -445,14 +427,12 @@ namespace PlayAndReplay
             if (play)
             {
                 play = false;
-                playToolStripMenuItem.Text = "Play";
                 Thread.Sleep(100);
                 watchplay.Stop();
             }
             if (replay)
             {
                 replay = false;
-                replayToolStripMenuItem.Text = "Replay";
                 Thread.Sleep(100);
                 Init();
                 watchreplay.Stop();
@@ -537,11 +517,11 @@ namespace PlayAndReplay
             {
                 if (!replay)
                     break;
-                if (linecount < richTextBox2.Lines.Length)
+                if (linecount < richTextBox2.Lines.Length & linereplay != ";")
                 {
                     elapsereplay = (double)watchreplay.ElapsedTicks / (Stopwatch.Frequency / (1000L * 1000L));
-                    string line = richTextBox2.Lines[linecount];
-                    string[] data = line.Split(';');
+                    linereplay = richTextBox2.Lines[linecount];
+                    string[] data = linereplay.Split(';');
                     double time = Convert.ToSingle(data[0]);
                     if (elapsereplay >= time)
                     {
@@ -641,6 +621,7 @@ namespace PlayAndReplay
                     else
                     {
                         linecount = 0;
+                        linereplay = "";
                         Init();
                         watchreplay.Stop();
                         watchrepeat = new Stopwatch();

@@ -48,6 +48,7 @@
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +60,7 @@
             this.optionToolStripMenuItem,
             this.playToolStripMenuItem,
             this.replayToolStripMenuItem,
+            this.stopToolStripMenuItem,
             this.toolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -206,6 +208,13 @@
             this.richTextBox2.Text = "";
             this.richTextBox2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.richTextBox2_KeyDown);
             // 
+            // stopToolStripMenuItem
+            // 
+            this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(54, 24);
+            this.stopToolStripMenuItem.Text = "Stop";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,6 +258,7 @@
         private System.Windows.Forms.ToolStripMenuItem emptyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kMDriverTypeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendinputToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
     }
 }
 
